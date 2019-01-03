@@ -1,0 +1,12 @@
+<h1>Welcome to my Booklist HomePage</h1>
+<img src="https://s3.amazonaws.com/libapps/accounts/114722/images/library_support-1632912_1920.jpg" alt="Book shelf" width="300" height="280">
+
+<% @list.each do |book| %>
+  <div>
+    <h2><%=book.values[1] %></h2>
+    <p><%=book.values[2] %></p>
+    <p>Age: <%=book.values[3].to_i %></p>
+    <p><%=book.values[4] %></p>
+  </div>
+
+<% end %>
