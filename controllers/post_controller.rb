@@ -14,7 +14,7 @@ class PostController < Sinatra::Base
     the_db = my_db.database
     the_db.collections
     results = my_db[:booklist]
-    @list = results.find();
+    @list = results.find()
     erb :'pages/index'
   end
 
@@ -23,10 +23,10 @@ class PostController < Sinatra::Base
     db = client.database
     db.collections
     result = client[:booklist]
-    data = result.find();
-    m = data.to_a
-    v = m.to_json
-    
+    data_hash = result.find()
+    get_array = data_hash.to_a
+    get_json = JSON.pretty_generate(get_array)
+
   end
 
 end
