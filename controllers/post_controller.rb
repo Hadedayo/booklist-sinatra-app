@@ -22,8 +22,10 @@ class PostController < Sinatra::Base
     db = client.database
     db.collections
     result = client[:booklist]
-    @the_booklist = result.find();
-    erb :'pages/api'
+    data = result.find();
+    data.to_json
+    # JSON.parse(data)
+    # JSON.pretty_generate(data)
   end
 
 end
