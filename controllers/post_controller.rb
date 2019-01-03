@@ -1,3 +1,4 @@
+require 'json'
 class PostController < Sinatra::Base
 
   set :root, File.join(File.dirname(__FILE__), "..")
@@ -23,9 +24,9 @@ class PostController < Sinatra::Base
     db.collections
     result = client[:booklist]
     data = result.find();
-    data.to_json
-    # JSON.parse(data)
-    # JSON.pretty_generate(data)
+    m = data.to_a
+    v = m.to_json
+    
   end
 
 end
