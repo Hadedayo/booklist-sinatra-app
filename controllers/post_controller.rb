@@ -18,7 +18,7 @@ class PostController < Sinatra::Base
     erb :'pages/index'
   end
 
-  get '/api/books' do
+  get '/api/multiple-books' do
     client = Mongo::Client.new([ '127.0.0.1:27017' ], :database => 'Book')
     db = client.database
     db.collections
@@ -28,12 +28,12 @@ class PostController < Sinatra::Base
     get_json = JSON.pretty_generate(get_array)
   end
 
-  get '/api/books/single' do
+  get '/api/single-book' do
     n = Mongo::Client.new([ '127.0.0.1:27017' ], :database => 'Book')
     b = n.database
     b.collections
     q = n[:booklist]
-    hash = q.find()
+    hash = q.find({"title": "The Hate U Give"})
     array = hash.to_a
     json = JSON.pretty_generate(array)
   end
