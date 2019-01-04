@@ -4,10 +4,10 @@ require 'httparty'
 class SingleBookService
   include HTTParty
 
-  base_uri 'api/books'
+  base_uri 'http://localhost:9292'
 
   def get_single_book
-    @single_book_data = self.class.get('/api/books')
+    @single_book_data = JSON.parse(self.class.get("/api/books").body)
   end
 
   def print_results
