@@ -26,7 +26,16 @@ class PostController < Sinatra::Base
     data_hash = result.find()
     get_array = data_hash.to_a
     get_json = JSON.pretty_generate(get_array)
+  end
 
+  get '/api/books/single' do
+    n = Mongo::Client.new([ '127.0.0.1:27017' ], :database => 'Book')
+    b = n.database
+    b.collections
+    q = n[:booklist]
+    hash = q.find()
+    array = hash.to_a
+    json = JSON.pretty_generate(array)
   end
 
 end

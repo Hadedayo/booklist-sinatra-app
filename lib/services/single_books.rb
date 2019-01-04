@@ -7,11 +7,7 @@ class SingleBookService
   base_uri 'http://localhost:9292'
 
   def get_single_book
-    @single_book_data = JSON.parse(self.class.get("/api/books").body)
-  end
-
-  def print_results
-    @single_book_data
+    @single_book_data = JSON.parse(self.class.get("/api/books/single").body)
   end
 
 end
