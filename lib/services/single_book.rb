@@ -1,20 +1,20 @@
+
 require 'json'
 require 'httparty'
 
 class SingleBookService
   include HTTParty
 
-  base_uri 'http://localhost:9292'
-
-  attr_reader :book_title, :author, :age, :gender
+  attr_accessor :book_title, :author, :age, :female_gender
 
   def initialize
     @book_title = "The Hate U Give"
     @author = 'Angie Thomas'
-    @age = 34.0
-    @gender = 'Female'
-
+    @age = 34
+    @female_gender = 'Female'
   end
+
+  base_uri 'http://localhost:9292'
 
   def get_single_book
     @single_book_data = JSON.parse(self.class.get("/api/single-book").body)
@@ -27,6 +27,10 @@ class SingleBookService
 
   def get_oid_character
     @single_book_data[0]["_id"]["$oid"]
+  end
+
+  def get_length_of_oid_character
+    @single_book_data[0]["_id"]["$oid"].length
   end
 
   def get_title
@@ -48,3 +52,5 @@ class SingleBookService
 end
 test = SingleBookService.new
 puts test.get_single_book
+puts test.get_id
+puts test.get_length_of_oid_character
